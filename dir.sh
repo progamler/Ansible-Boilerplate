@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define roles here (space-separated)
+ROLES="template common"
+
 # Top-level files
 touch production staging site.yml webservers.yml dbservers.yml
 
@@ -12,7 +15,7 @@ touch host_vars/hostname1.yml host_vars/hostname2.yml
 mkdir -p library module_utils filter_plugins
 
 # Roles and subdirectories
-for role in common webtier monitoring fooapp; do
+for role in $ROLES; do
     mkdir -p roles/$role/{tasks,handlers,templates,files,vars,defaults,meta,library,module_utils,lookup_plugins}
     
     # Create main.yml where applicable
